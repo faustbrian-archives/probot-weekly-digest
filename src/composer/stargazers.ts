@@ -12,10 +12,10 @@ export const composeStargazers = (stargazers: any[], dateStart: string, dateEnd:
 		body += `Last week there ${plural("was", data, false)} ${plural("stargazer", data)}.\n\n`;
 
 		for (const item of data) {
-			body += `- [${item.user.login}](${item.user.html_url})\n`;
+			body += `@${item.user.login} `;
 		}
 
-		body += `\nYou are the ${plural("star", data)}! :star2:\n`;
+		body += `\n\nYou are the ${plural("star", data)}! :star2:\n`;
 	}
 
 	return body;

@@ -29,7 +29,7 @@ export const composeContributors = (commits: CommitList, dateStart: string, date
 		)}.\n\n`;
 
 		for (const item of uniqueContributors) {
-			body += `@${item.login}`;
+			body += `@${item.login} `;
 		}
 
 		if (uniqueContributors.length) {

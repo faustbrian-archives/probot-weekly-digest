@@ -17,7 +17,7 @@ export const composeCommits = (commits: CommitList, dateStart: string, dateEnd: 
 		body += `Last week there ${plural("was", data, false)} ${plural("commit", data)}.\n\n`;
 
 		for (const [author, authorCommits] of Object.entries(groupBy(data, "author.login"))) {
-			body += `@${author}\n`;
+			body += `\n@${author}\n`;
 
 			for (const item of authorCommits) {
 				body += `- [${item.commit.message.split("\n")[0]}](${item.html_url})\n`;

@@ -14,7 +14,7 @@ const renderSectionByType = (title: string, pullRequests: any): string => {
 	)} ${title.toLowerCase()}.\n\n`;
 
 	for (const [author, authorPullRequests] of Object.entries(groupBy(pullRequests, "user.login"))) {
-		body += `@${author}\n`;
+		body += `\n@${author}\n`;
 
 		for (const item of authorPullRequests) {
 			body += `- #${item.number} [${item.title}](${item.html_url})\n`;

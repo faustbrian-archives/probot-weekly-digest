@@ -4,11 +4,11 @@ import { BOT_NAME } from "../constants";
 import { IssueList } from "../types";
 import { plural } from "../utils";
 
-const renderSection = (issues: IssueList, action): string => {
-	let body: string = "";
+const renderSection = (title: string, issues: IssueList, action): string => {
+	let body: string = `### ${title}\n\n`;
 
 	for (const [author, authorIssues] of Object.entries(groupBy(issues, "user.login"))) {
-		body += `@${author}\n`;
+		body += `\n@${author}\n`;
 
 		for (const item of authorIssues) {
 			body += action(item);
@@ -47,15 +47,19 @@ export const composeIssues = (issues: IssueList, dateStart: string, dateEnd: str
 		}
 
 		if (openIssues.length > 0) {
-			body += `### Opened\n\n`;
-
-			body += renderSection(openIssues, item => `- #${item.number} [${item.title}](${item.html_url})\n`);
+			body += renderSection(
+				"Opened",
+				openIssues,
+				item => `- #${item.number} [${item.title}](${item.html_url})\n`,
+			);
 		}
 
 		if (closedIssues.length > 0) {
-			body += `### Closed\n\n`;
-
-			body += renderSection(closedIssues, item => `- #${item.number} [${item.title}](${item.html_url})\n`);
+			body += renderSection(
+				"Closed",
+				closedIssues,
+				item => `- #${item.number} [${item.title}](${item.html_url})\n`,
+			);
 		}
 
 		const likedIssues: IssueList = data
@@ -66,9 +70,8 @@ export const composeIssues = (issues: IssueList, dateStart: string, dateEnd: str
 			.slice(0, 5);
 
 		if (likedIssues.length > 0) {
-			body += `### Liked\n\n`;
-
 			body += renderSection(
+				"Liked",
 				likedIssues,
 				item =>
 					`- #${item.number} [${item.title}](${item.html_url}) _(It received :+1: x${item.reactions["+1"]}, :smile: x${item.reactions.laugh}, :tada: x${item.reactions.hooray} and :heart: x${item.reactions.heart}.)_\n`,
@@ -81,9 +84,8 @@ export const composeIssues = (issues: IssueList, dateStart: string, dateEnd: str
 			.slice(0, 5);
 
 		if (noisyIssues.length > 0) {
-			body += `### Noisy\n\n`;
-
 			body += renderSection(
+				"Noisy",
 				noisyIssues,
 				item =>
 					`- #${item.number} [${item.title}](${item.html_url}) _(It received ${plural(
