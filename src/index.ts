@@ -4,7 +4,6 @@ import { SCHEDULE_INTERVAL } from "./constants";
 import { createLabel } from "./services/api";
 import { loadConfig } from "./services/config";
 import { createDigest } from "./services/digest";
-// @ts-ignore
 import { dateEnd, dateStart, hasDuplicates, isSunday } from "./utils";
 
 const createLabelIfNotExist = async (context: Context, owner: string, repo: string) => {
@@ -47,13 +46,13 @@ export = async (robot: Application) => {
 		const { owner, repo } = context.repo();
 		robot.log(`[SCHEDULE] ${owner}/${repo}`);
 
-		// if (await hasDuplicates(context, { owner, repo, dateStart: dateStart() })) {
-		// 	robot.log(`Weekly Digest for [${owner}/${repo}] has already been published.`);
-		// 	return;
-		// }
+		if (await hasDuplicates(context, { owner, repo, dateStart: dateStart() })) {
+			robot.log(`Weekly Digest for [${owner}/${repo}] has already been published.`);
+			return;
+		}
 
-		// if (isSunday()) {
-		await createDigest(context, { owner, repo, dateStart: dateStart(), dateEnd: dateEnd() });
-		// }
+		if (isSunday()) {
+			await createDigest(context, { owner, repo, dateStart: dateStart(), dateEnd: dateEnd() });
+		}
 	});
 };
