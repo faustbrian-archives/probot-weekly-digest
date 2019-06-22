@@ -7,9 +7,9 @@
 		"probot",
 		"probot-app"
 	],
-	"homepage": "https://github.com//weekly-digest",
-	"bugs": "https://github.com//weekly-digest/issues",
-	"repository": "https://github.com//weekly-digest.git",
+	"homepage": "https://github.com/botamic/weekly-digest",
+	"bugs": "https://github.com/botamic/weekly-digest/issues",
+	"repository": "https://github.com/botamic/weekly-digest.git",
 	"license": "MPL-2.0",
 	"author": "Brian Faust <hello@basecode.sh>",
 	"scripts": {
