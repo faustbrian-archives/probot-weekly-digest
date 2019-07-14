@@ -31,6 +31,7 @@ export const isSunday = (): boolean =>
 		.utc()
 		.isoWeekday() === 7;
 
+// tslint:disable-next-line: no-shadowed-variable
 export const hasDuplicates = async (context, { owner, repo, dateStart }) =>
 	(await searchIssues(context, {
 		owner,

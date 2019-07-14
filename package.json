@@ -61,6 +61,8 @@
 		"verbose": true
 	},
 	"dependencies": {
+		"@botamic/toolkit": "^0.1.0",
+		"@hapi/joi": "^15.1.0",
 		"lodash.groupby": "^4.6.0",
 		"moment": "^2.24.0",
 		"pluralize": "^8.0.0",
