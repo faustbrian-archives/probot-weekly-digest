@@ -1,6 +1,5 @@
 import groupBy from "lodash.groupby";
 import moment from "moment";
-import { BOT_NAME } from "../constants";
 import { IssueList } from "../types";
 import { plural } from "../utils";
 
@@ -22,7 +21,8 @@ const getLikes = item => item.reactions["+1"] + item.reactions.laugh + item.reac
 
 export const composeIssues = (issues: IssueList, dateStart: string, dateEnd: string): string => {
 	const data: IssueList = (issues || []).filter(
-		item => moment(item.created_at).isBetween(dateStart, dateEnd) && item.user.login !== BOT_NAME,
+		item =>
+			moment(item.created_at).isBetween(dateStart, dateEnd) && item.user.login !== `${process.env.APP_NAME}[bot]`,
 	);
 
 	let body: string = `## Issues\n\n`;

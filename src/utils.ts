@@ -1,6 +1,5 @@
 import moment from "moment";
 import pluralize from "pluralize";
-import { APP_NAME } from "./constants";
 import { searchIssues } from "./services/api";
 
 export const dateStart = () =>
@@ -37,6 +36,6 @@ export const hasDuplicates = async (context, { owner, repo, dateStart }) =>
 		owner,
 		repo,
 		date: getPreviousDay(dateStart).substr(0, 19),
-		author: `app/${APP_NAME}`,
+		author: `app/${process.env.APP_NAME}`,
 		type: "issues",
 	})).data.total_count >= 1;

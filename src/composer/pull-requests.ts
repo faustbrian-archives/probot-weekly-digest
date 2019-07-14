@@ -1,6 +1,5 @@
 import groupBy from "lodash.groupby";
 import moment from "moment";
-import { BOT_NAME } from "../constants";
 import { PullRequestList } from "../types";
 import { plural } from "../utils";
 
@@ -31,7 +30,7 @@ export const composePullRequests = (pullRequests: PullRequestList, dateStart: st
 			item.state === "open" &&
 			!item.merged_at &&
 			moment(item.created_at).isSame(item.updated_at) &&
-			item.user.login !== BOT_NAME
+			item.user.login !== `${process.env.APP_NAME}[bot]`
 		) {
 			return true;
 		}
@@ -40,7 +39,7 @@ export const composePullRequests = (pullRequests: PullRequestList, dateStart: st
 			moment(item.updated_at).isBetween(dateStart, dateEnd) &&
 			item.state === "open" &&
 			!item.merged_at &&
-			item.user.login !== BOT_NAME
+			item.user.login !== `${process.env.APP_NAME}[bot]`
 		) {
 			return true;
 		}
@@ -48,7 +47,7 @@ export const composePullRequests = (pullRequests: PullRequestList, dateStart: st
 		if (
 			moment(item.merged_at).isBetween(dateStart, dateEnd) &&
 			item.state === "closed" &&
-			item.user.login !== BOT_NAME
+			item.user.login !== `${process.env.APP_NAME}[bot]`
 		) {
 			return true;
 		}

@@ -1,12 +1,13 @@
 import groupBy from "lodash.groupby";
 import moment from "moment";
-import { BOT_NAME } from "../constants";
 import { CommitList } from "../types";
 import { plural } from "../utils";
 
 export const composeCommits = (commits: CommitList, dateStart: string, dateEnd: string): string => {
 	const data: CommitList = (commits || []).filter(
-		item => moment(item.commit.committer.date).isBetween(dateStart, dateEnd) && item.author.login !== BOT_NAME,
+		item =>
+			moment(item.commit.committer.date).isBetween(dateStart, dateEnd) &&
+			item.author.login !== `${process.env.APP_NAME}[bot]`,
 	);
 
 	let body: string = "## Commits\n\n";
