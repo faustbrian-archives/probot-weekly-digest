@@ -67,7 +67,6 @@
 		"moment": "^2.24.0",
 		"pluralize": "^8.0.0",
 		"probot": "^9.2.19",
-		"probot-config": "^1.1.0",
 		"probot-scheduler": "^2.0.0-beta.1"
 	},
 	"devDependencies": {
