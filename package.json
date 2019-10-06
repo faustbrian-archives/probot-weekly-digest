@@ -62,7 +62,7 @@
 	},
 	"dependencies": {
 		"@botamic/toolkit": "0.3.0",
-		"@hapi/joi": "15.1.1",
+		"@hapi/joi": "16.1.7",
 		"lodash.groupby": "4.6.0",
 		"moment": "2.24.0",
 		"pluralize": "8.0.0",
