@@ -79,7 +79,7 @@
 		"@types/rimraf": "2.0.2",
 		"@typeskrift/tsconfig": "0.1.2",
 		"@typeskrift/tslint": "0.1.5",
-		"codecov": "3.5.0",
+		"codecov": "3.6.1",
 		"jest": "24.9.0",
 		"jest-extended": "0.11.2",
 		"nock": "11.4.0",
