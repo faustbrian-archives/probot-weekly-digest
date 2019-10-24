@@ -76,7 +76,7 @@
 		"@types/node": "12.11.6",
 		"@types/pluralize": "0.0.29",
 		"@types/prettier": "1.18.3",
-		"@types/rimraf": "2.0.2",
+		"@types/rimraf": "2.0.3",
 		"@typeskrift/tsconfig": "0.1.2",
 		"@typeskrift/tslint": "0.1.5",
 		"codecov": "3.6.1",
